@@ -7,12 +7,11 @@ Background: Launch browser and open link
 	Then open home page 
 
 
-# Scenario Outline: SignUp Page 
-#
-#	Given User navigate to SignUp page 
-#	When Click On SignIn button   
-#	Then User should be enter Required details 
-#	Then user should be successfully Register 
+ Scenario: SignUp Page 
+
+	Given User navigate to SignUp page 
+	When SignUp details   
+	Then user successfully Register 
 	
  Scenario Outline: Verify Login details 
 
@@ -25,4 +24,5 @@ Examples:
 
 |   username 	        | password |accountname|
 |nirajsinha310@gmail.com|nirajsinha|niraj sinha|
-|nirajsinha73@gmail.com|nirajsinha|niraj|
+|nirajsinha12@gmail.com|nirajsinha|niraj|
+|nirajsinha123@gmail.com|nirajsinha|Niraj|

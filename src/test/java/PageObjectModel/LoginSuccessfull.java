@@ -3,17 +3,16 @@ package PageObjectModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginSuccessfull {
 	WebDriver driver;
-	WebDriverWait wait = new WebDriverWait(driver, 10);
+	
 
 	public LoginSuccessfull(WebDriver driver) {
 		this.driver = driver;
 	}
 	public void LoginButtonClick() {
-		WebElement Home = driver.findElement(By.xpath("//a[@class='login']"));
+		WebElement Home = driver.findElement(By.xpath("//button[@id='SubmitLogin']"));
 		Home.click();
 
 }

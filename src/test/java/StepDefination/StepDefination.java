@@ -7,6 +7,9 @@ import org.testng.asserts.SoftAssert;
 import PageObjectModel.LoginPage;
 import PageObjectModel.LoginPageDetails;
 import PageObjectModel.LoginSuccessfull;
+import PageObjectModel.SignUpButton;
+import PageObjectModel.SignUpDetails;
+import PageObjectModel.SignUpPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,11 +17,11 @@ import io.cucumber.java.en.When;
 
 public class StepDefination {
 	static WebDriver driver;
-	SoftAssert assertion = new SoftAssert();
-
+	
 	@Given("We need to launch browser")
-	public void we_need_to_launch_browser() {
-		System.setProperty("webdriver.chrome.driver", "D:\\Practice Project\\phptravels\\Browser\\chromedriver.exe");
+	public void we_need_to_launch_browser() 
+	{
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\Browser\\chromedriver.exe");
 		driver = new ChromeDriver();
 		System.out.println("1");
 
@@ -68,5 +71,30 @@ public class StepDefination {
 	{
 		LoginSuccessfull LS = new LoginSuccessfull(driver);
 		LS.LoginButtonClick();
+	}
+	
+
+	
+	@Given("User navigate to SignUp page")
+	public void user_navigate_to_SignUp_page()
+	{
+		System.out.println("SignUp Page details");
+		SignUpPage SP = new SignUpPage(driver);
+		SP.CreateAccount();
+	}
+
+	@When("SignUp details")
+	public void signup_details()
+	{
+		SignUpDetails SD = new SignUpDetails(driver);
+		SD.SignUp();
+
+	}
+
+	@Then("user successfully Register")
+	public void user_successfully_Register()
+	{
+		SignUpButton SB = new SignUpButton(driver);
+		SB.SignUpClick();
 	}
 }
