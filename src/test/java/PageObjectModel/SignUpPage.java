@@ -13,7 +13,7 @@ public class SignUpPage {
 	public void CreateAccount() 
 	{
 		driver.findElement(By.xpath("//a[@class='login']")).click();
-		driver.findElement(By.xpath("//input[@id='email_create']")).sendKeys("nirajsinha123@gmail.com");
+		driver.findElement(By.xpath("//input[@id='email_create']")).sendKeys("niraj6@gmail.com");
 		driver.findElement(By.xpath("//button[@id='SubmitCreate']")).click();
 
 	}

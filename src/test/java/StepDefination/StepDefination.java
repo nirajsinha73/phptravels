@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.asserts.SoftAssert;
 
+import PageObjectModel.CategoryPage;
 import PageObjectModel.LoginPage;
 import PageObjectModel.LoginPageDetails;
 import PageObjectModel.LoginSuccessfull;
@@ -21,6 +22,8 @@ public class StepDefination {
 	@Given("We need to launch browser")
 	public void we_need_to_launch_browser() 
 	{
+		System.out.println("Backgroud part started");
+
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\Browser\\chromedriver.exe");
 		driver = new ChromeDriver();
 		System.out.println("1");
@@ -37,47 +40,14 @@ public class StepDefination {
 	@Then("open home page")
 	public void open_home_page() throws Throwable {
 		driver.manage().window().maximize();
-		System.out.println("3");
+		System.out.println("Backgroud part completed");
 
 	}
 
-	@Given("User navigate to login page")
-	public void user_navigate_to_login_page() throws Throwable 
-	{
-		System.out.println("We are on Login page");
-		
-	}
-
-	@When("Click on Login button")
-	public void click_on_Login_button() 
-	{
-		LoginPage h = new LoginPage(driver);
-		h.LoginClick();
-		System.out.println("4");
-	}
-
-	@And("enter {string} and {string}")
-	public void enter_and(String strArg1, String strArg2) 
-	{
-		System.out.println("4");
-		LoginPageDetails LD = new LoginPageDetails(driver);
-		LD.LoginDetails(strArg1, strArg2);
-
-		
-	 
-	}
-	@Then("user should be succesfully Login{string}")
-	public void user_should_be_succesfully_Login(String accountname)
-	{
-		LoginSuccessfull LS = new LoginSuccessfull(driver);
-		LS.LoginButtonClick();
-	}
-	
-
-	
 	@Given("User navigate to SignUp page")
 	public void user_navigate_to_SignUp_page()
 	{
+		System.out.println("Signup scenario Started");
 		System.out.println("SignUp Page details");
 		SignUpPage SP = new SignUpPage(driver);
 		SP.CreateAccount();
@@ -96,5 +66,53 @@ public class StepDefination {
 	{
 		SignUpButton SB = new SignUpButton(driver);
 		SB.SignUpClick();
+		System.out.println("Signup scenario Completed");
+	}
+	
+	@Then("Close the browser")
+	public void Close_the_browser()
+	{
+		driver.quit();
+	}
+	
+	@Given("User navigate to login page")
+	public void user_navigate_to_login_page() throws Throwable 
+	{
+		System.out.println("Login scenario Started");
+
+		System.out.println("We are on Home page");
+		
+	}
+
+	@When("Click on Login button")
+	public void click_on_Login_button() 
+	{
+		LoginPage h = new LoginPage(driver);
+		h.LoginClick();
+		System.out.println("4");
+	}
+
+	@And("enter {string} and {string}")
+	public void enter_and(String Username, String Password) 
+	{
+		System.out.println("5");
+		LoginPageDetails LD = new LoginPageDetails(driver);
+		LD.LoginDetails(Username, Password);
+	}
+	
+	@Then("user should be succesfully Login{string}")
+	public void user_should_be_succesfully_Login(String accountname)
+	{
+		LoginSuccessfull LS = new LoginSuccessfull(driver);
+		LS.LoginButtonClick();
+		System.out.println("6");
+		System.out.println("Login scenario Completed");
+	}
+	
+	@Then("Close browser")
+	public void Close_browser()
+	{
+		driver.quit();
 	}
 }
+
